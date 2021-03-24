@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  laravel-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: facturacion
+    ports:
+      - 4306:3306
+
+  laravel:
+    build:
+      context: ./
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - laravel-db
